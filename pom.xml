@@ -37,6 +37,13 @@
     </dependency>
   </dependencies>
 
+  <distributionManagement>
+    <site>
+      <id>devonline.academy</id>
+      <url>scp://devonline.academy/javamm/maven-docs</url>
+    </site>
+  </distributionManagement>
+
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>

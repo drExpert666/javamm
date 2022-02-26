@@ -37,7 +37,7 @@ public class CompilerConfigurator {
 
     private TokenParser tokenParser = new TokenParserImpl();
 
-    private SourceLineReader sourceLineReader = new SourceLineReaderImpl();
+    private SourceLineReader sourceLineReader = new SourceLineReaderImpl(tokenParser);
 
     private Set<OperationReader> operationReaders = Set.of(new PrintlnOperationReader());
 

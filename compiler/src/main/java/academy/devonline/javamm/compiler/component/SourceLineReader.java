@@ -15,27 +15,19 @@
  *
  */
 
-package academy.devonline.javamm.code.fragment.operation;
+package academy.devonline.javamm.compiler.component;
 
-import static java.util.Objects.requireNonNull;
-import academy.devonline.javamm.code.fragment.Operation;
+import java.util.List;
+import academy.devonline.javamm.code.fragment.SourceCode;
 import academy.devonline.javamm.code.fragment.SourceLine;
 
 /**
  * @author devonline
  * @link http://devonline.academy/javamm
  */
-public class PrintlnOperation extends AbstractOperation implements Operation {
+public interface SourceLineReader {
 
-    private final String text;
+    // считываем список SourceLine из исходного кода
+    List<SourceLine> read(SourceCode sourceCode);
 
-    public PrintlnOperation(final SourceLine sourceLine, final String text) {
-        super(sourceLine);
-        this.text = requireNonNull(text);
-    }
-
-
-    public String getText() {
-        return text;
-    }
 }

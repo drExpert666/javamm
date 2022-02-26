@@ -15,27 +15,22 @@
  *
  */
 
-package academy.devonline.javamm.code.fragment.operation;
+package academy.devonline.javamm.compiler.component.impl;
 
-import static java.util.Objects.requireNonNull;
-import academy.devonline.javamm.code.fragment.Operation;
-import academy.devonline.javamm.code.fragment.SourceLine;
+import java.util.List;
+import academy.devonline.javamm.compiler.component.TokenParser;
+import academy.devonline.javamm.compiler.model.TokenParserResult;
 
 /**
  * @author devonline
  * @link http://devonline.academy/javamm
  */
-public class PrintlnOperation extends AbstractOperation implements Operation {
+public class TokenParserImpl implements TokenParser {
 
-    private final String text;
-
-    public PrintlnOperation(final SourceLine sourceLine, final String text) {
-        super(sourceLine);
-        this.text = requireNonNull(text);
-    }
-
-
-    public String getText() {
-        return text;
+    // самая простая реализаци - разбиваем полуенную строчку кода по пробелу
+    @Override
+    public TokenParserResult parseLine(final String line, final boolean multilineCommentStarted) {
+        final List<String> tokens = line.isEmpty() ? List.of() : List.of(line.trim().split(" "));
+        return new TokenParserResult(tokens, false);
     }
 }

@@ -15,27 +15,23 @@
  *
  */
 
-package academy.devonline.javamm.code.fragment.operation;
+package academy.devonline.javamm.code.exception;
 
 import static java.util.Objects.requireNonNull;
-import academy.devonline.javamm.code.fragment.Operation;
-import academy.devonline.javamm.code.fragment.SourceLine;
 
 /**
  * @author devonline
  * @link http://devonline.academy/javamm
  */
-public class PrintlnOperation extends AbstractOperation implements Operation {
+// базовый класс системной ошибки
+// возникла в реализации vm javamm
+public final class ConfigException extends RuntimeException {
 
-    private final String text;
-
-    public PrintlnOperation(final SourceLine sourceLine, final String text) {
-        super(sourceLine);
-        this.text = requireNonNull(text);
+    public ConfigException(final String message) {
+        super(requireNonNull(message));
     }
 
-
-    public String getText() {
-        return text;
+    public ConfigException(final String message, final Throwable cause) {
+        super(requireNonNull(message), requireNonNull(cause));
     }
 }

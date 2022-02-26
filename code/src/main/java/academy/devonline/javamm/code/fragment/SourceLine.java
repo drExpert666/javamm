@@ -19,14 +19,18 @@ package academy.devonline.javamm.code.fragment;
 
 import java.util.List;
 import java.util.Objects;
+import static java.util.Objects.requireNonNull;
 
 /**
  * @author devonline
  * @link http://devonline.academy/javamm
  */
-// представляет строчку кода
+// представляет строчку кода (используется паттерн ImmutableObject и NullObject)
 public final class SourceLine implements Comparable<SourceLine>, CompiledCodeFragment {
 
+    /* паттерн ImmutableObject - все поля final и private, доступ к полям только через getters, все листы
+     следовательно поля закрыты для изменения
+      Все листы делаем unmodifiable List - лист становится закрыт для изменения */
     public static final SourceLine EMPTY_SOURCE_LINE = new SourceLine("<UNDEFINED>", 0, List.of());
 
     // название файла, в котором объявлены строчки кода
@@ -39,9 +43,12 @@ public final class SourceLine implements Comparable<SourceLine>, CompiledCodeFra
     private List<String> tokens;
 
     public SourceLine(final String moduleName, final int number, final List<String> tokens) {
-        this.moduleName = moduleName;
+        // валидация, что передаваемые объект не null (паттерн NullObject)
+        this.moduleName = requireNonNull(moduleName);
         this.number = number;
-        this.tokens = tokens;
+        // возвращает неизменяемый лист токенов, также каждый элемент
+        // валидируется на not null (паттерн NullObject)
+        this.tokens = List.copyOf(tokens);
     }
 
     public String getModuleName() {
@@ -75,6 +82,22 @@ public final class SourceLine implements Comparable<SourceLine>, CompiledCodeFra
 
     private int getTokenCount() {
         return tokens.size();
+    }
+
+    public List<String> subList(final int start, final int end) {
+        return tokens.subList(start, end);
+    }
+
+    public List<String> subList(final int start) {
+        return tokens.subList(start, getTokenCount());
+    }
+
+    public boolean contains(final String token) {
+        return tokens.contains(token);
+    }
+
+    public int indexOf(final String token) {
+        return token.indexOf(token);
     }
 
     @Override

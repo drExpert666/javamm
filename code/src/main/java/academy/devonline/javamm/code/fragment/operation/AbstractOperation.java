@@ -25,7 +25,6 @@ import academy.devonline.javamm.code.fragment.SourceLine;
  * @author devonline
  * @link http://devonline.academy/javamm
  */
-
 // так как каждая операция должна ссылаться на объект sourceLine в котором она объявлена, создаём данный класс,
 // который хранит экземпляр sourceLine и инициализируется при создании экземпляра этого класса
 public abstract class AbstractOperation implements Operation {

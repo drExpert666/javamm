@@ -15,27 +15,18 @@
  *
  */
 
-package academy.devonline.javamm.code.fragment.operation;
+package academy.devonline.javamm.compiler.component;
 
-import static java.util.Objects.requireNonNull;
-import academy.devonline.javamm.code.fragment.Operation;
-import academy.devonline.javamm.code.fragment.SourceLine;
+import academy.devonline.javamm.compiler.model.TokenParserResult;
 
 /**
  * @author devonline
  * @link http://devonline.academy/javamm
  */
-public class PrintlnOperation extends AbstractOperation implements Operation {
+public interface TokenParser {
 
-    private final String text;
+    // принимает строковое представление строчки кода, которое нужно распарсить и представить в виде токенов
+    // и флаг, который показывает был ли начат многострочный комментарий, или он уже завершён
+    TokenParserResult parseLine(String line, boolean multilineCommentStarted);
 
-    public PrintlnOperation(final SourceLine sourceLine, final String text) {
-        super(sourceLine);
-        this.text = requireNonNull(text);
-    }
-
-
-    public String getText() {
-        return text;
-    }
 }

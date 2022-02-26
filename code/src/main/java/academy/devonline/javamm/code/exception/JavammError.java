@@ -15,27 +15,21 @@
  *
  */
 
-package academy.devonline.javamm.code.fragment.operation;
+package academy.devonline.javamm.code.exception;
 
+import java.util.Objects;
 import static java.util.Objects.requireNonNull;
-import academy.devonline.javamm.code.fragment.Operation;
-import academy.devonline.javamm.code.fragment.SourceLine;
 
 /**
  * @author devonline
  * @link http://devonline.academy/javamm
  */
-public class PrintlnOperation extends AbstractOperation implements Operation {
+// базовый класс пользовательских ошибок
+// ошибки языка Javamm
+public abstract class JavammError extends RuntimeException {
 
-    private final String text;
-
-    public PrintlnOperation(final SourceLine sourceLine, final String text) {
-        super(sourceLine);
-        this.text = requireNonNull(text);
+    protected JavammError(final String message) {
+        super(requireNonNull(message), null, false, false);
     }
 
-
-    public String getText() {
-        return text;
-    }
 }

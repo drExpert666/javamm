@@ -15,30 +15,20 @@
  *
  */
 
-package academy.devonline.javamm.cmd;
+package academy.devonline.javamm.vm;
 
-import java.io.IOException;
+import academy.devonline.javamm.code.exception.JavammError;
+import academy.devonline.javamm.code.fragment.SourceCode;
 import academy.devonline.javamm.compiler.JavammSyntaxError;
 import academy.devonline.javamm.interpreter.JavammRuntimeError;
 import academy.devonline.javamm.interpreter.TerminateInterpreterException;
-import academy.devonline.javamm.vm.VirtualMachine;
-import academy.devonline.javamm.vm.VirtualMachineBuilder;
 
 /**
  * @author devonline
  * @link http://devonline.academy/javamm
  */
-public final class JmmVmLauncher {
+public interface VirtualMachine {
 
-    private JmmVmLauncher() {
-    }
+    void run(SourceCode... sourceCodes) throws JavammSyntaxError, JavammRuntimeError, TerminateInterpreterException;
 
-    public static void main(final String[] args) throws IOException {
-        final VirtualMachine virtualMachine = new VirtualMachineBuilder().build();
-        try {
-            virtualMachine.run(new FileSourceCode("cmd/src/main/resources/test.javamm"));
-        } catch (final JavammSyntaxError | JavammRuntimeError e) {
-            System.err.println(e.getMessage());
-        }
-    }
 }

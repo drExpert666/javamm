@@ -57,6 +57,13 @@
     </dependency>
   </dependencies>
 
+  <distributionManagement>
+    <site>
+      <id>devonline.academy</id>
+      <url>http://drExpert666.academy</url>
+    </site>
+  </distributionManagement>
+
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>

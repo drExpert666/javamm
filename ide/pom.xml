@@ -11,10 +11,8 @@
 
     <artifactId>ide</artifactId>
 
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-    </properties>
+    <name>Javamm IDE</name>
+    <description>Simple GUI IDE for javamm programming language</description>
 
     <dependencies>
         <dependency>

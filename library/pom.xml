@@ -11,10 +11,8 @@
 
     <artifactId>library</artifactId>
 
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-    </properties>
+    <name>Javamm std lib</name>
+    <description>Standard library with core, math and string function modules for javamm programming language</description>
 
     <dependencies>
         <dependency>

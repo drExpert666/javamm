@@ -11,10 +11,8 @@
 
     <artifactId>cmd</artifactId>
 
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-    </properties>
+    <name>Javamm cmd</name>
+    <description>Console tool for javamm programming language</description>
 
     <dependencies>
         <dependency>

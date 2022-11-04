@@ -15,18 +15,20 @@
  *
  */
 
-package academy.devonline.javamm.compiler.component;
+package academy.devonline.javamm.compiler.component.impl;
 
-import java.util.List;
-import academy.devonline.javamm.compiler.model.TokenParserResult;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.exceptions.base.MockitoException;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 /**
  * @author drExpert666
  */
-public class TokenParserImpl implements TokenParser {
-    @Override
-    public TokenParserResult parseLine(final String line, final boolean multilineCommentStarted) {
-        final List<String> tokens = line.isEmpty() ? List.of() : List.of(line.trim().split(" "));
-        return new TokenParserResult(tokens, false);
-    }
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
+@ExtendWith(MockitoExtension.class)
+class TokenParserImplTest {
+
 }

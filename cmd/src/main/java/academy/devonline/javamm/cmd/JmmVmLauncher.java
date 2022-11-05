@@ -18,6 +18,8 @@
 package academy.devonline.javamm.cmd;
 
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Optional;
 import academy.devonline.javamm.code.fragment.ByteCode;
 import academy.devonline.javamm.code.fragment.SourceCode;
 import academy.devonline.javamm.compiler.Compiler;
@@ -29,6 +31,22 @@ import academy.devonline.javamm.compiler.CompilerConfigurator;
 public class JmmVmLauncher {
 
     public static void main(String[] args) {
+
+        final List<Integer> integers = List.of(15, 2, 3, 48, 5);
+        final Integer reduce = integers.stream().reduce((a, b) -> a > b ? a : b).orElse(-666);
+        System.out.println(reduce);
+
+        final ListIterator<Integer> listIterator = integers.listIterator();
+
+        while (listIterator.hasNext()) {
+            final Integer next = listIterator.next();
+            System.out.println(next);
+            if (next == 3) {
+                listIterator.previous();
+                break;
+            }
+        }
+
         final Compiler compiler = new CompilerConfigurator().getCompiler();
         final ByteCode byteCode = compiler.compile(new SourceCode() {
             @Override

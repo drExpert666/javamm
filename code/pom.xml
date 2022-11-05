@@ -14,4 +14,18 @@
     <name>Javamm code</name>
     <description>Code base module for javamm programming language</description>
 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>
+                        @{argLine}
+                        --add-opens javamm.code/academy.devonline.javamm.code.fragment.operation=ALL-UNNAMED
+                    </argLine>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

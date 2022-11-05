@@ -15,41 +15,19 @@
  *
  */
 
-package academy.devonline.javamm.code.fragment.operation;
+package academy.devonline.javamm.interpreter.component.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-import academy.devonline.javamm.code.fragment.SourceLine;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 /**
  * @author drExpert666
  */
-
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @ExtendWith(MockitoExtension.class)
-class AbstractOperation_UnitTest {
-
-    @Mock
-    private SourceLine sourceLine;
-
-    private AbstractOperation abstractOperation;
-
-    @BeforeEach
-    void beforeEach() {
-        abstractOperation = new AbstractOperation(sourceLine) {};
-    }
-
-    @Test
-    void toString_should_delegate_the_call_to_SourceLine_toString() {
-        when(sourceLine.toString()).thenReturn("REDIRECTED!");
-        assertEquals("REDIRECTED!", abstractOperation.toString());
-    }
-
+class BlockOperationInterpreterImplTest {
+  
 }

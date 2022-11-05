@@ -17,6 +17,7 @@
 
 package academy.devonline.javamm.cmd;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Optional;
@@ -24,46 +25,24 @@ import academy.devonline.javamm.code.fragment.ByteCode;
 import academy.devonline.javamm.code.fragment.SourceCode;
 import academy.devonline.javamm.compiler.Compiler;
 import academy.devonline.javamm.compiler.CompilerConfigurator;
+import academy.devonline.javamm.interpreter.Interpreter;
+import academy.devonline.javamm.interpreter.InterpreterConfigurator;
 
 /**
  * @author drExpert666
  */
-public class JmmVmLauncher {
+public final class JmmVmLauncher {
 
-    public static void main(String[] args) {
+    private JmmVmLauncher() {
+    }
 
-        final List<Integer> integers = List.of(15, 2, 3, 48, 5);
-        final Integer reduce = integers.stream().reduce((a, b) -> a > b ? a : b).orElse(-666);
-        System.out.println(reduce);
-
-        final ListIterator<Integer> listIterator = integers.listIterator();
-
-        while (listIterator.hasNext()) {
-            final Integer next = listIterator.next();
-            System.out.println(next);
-            if (next == 3) {
-                listIterator.previous();
-                break;
-            }
-        }
+    public static void main(String[] args) throws IOException {
 
         final Compiler compiler = new CompilerConfigurator().getCompiler();
-        final ByteCode byteCode = compiler.compile(new SourceCode() {
-            @Override
-            public String getModuleName() {
-                return "test";
-            }
-
-            @Override
-            public List<String> getLines() {
-                return List.of(
-                    "println ( HelloWorld )",
-                    "",
-                    "println ( HelloJava )"
-                );
-            }
-        });
-        System.out.println(byteCode.getCode());
+        final Interpreter interpreter = new InterpreterConfigurator().getInterpreter();
+        final ByteCode byteCode = compiler.compile(new FileSourceCode("cmd/src/main/resources/test.javamm"));
+//        System.out.println(byteCode.getCode());
+        interpreter.interpret(byteCode);
     }
 
 }
